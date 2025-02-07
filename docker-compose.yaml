@@ -1,6 +1,6 @@
 services:
   wwww:
-    image: php:apache
+    build: . #va chercher le .dockerfile dans lequel on installe l'image de php + mysqli
     volumes:
       - "./:/var/www/html" #sync project dir with the container web dir. ./ means "file you are currently in"
     ports:
@@ -10,6 +10,8 @@ services:
       - db
     env_file:
       - .env  # link the env file
+
+
   db:
     image: mysql:latest
     environment:
@@ -29,4 +31,4 @@ services:
       - PMA_HOST=db
       - PMA_PORT=3306
     env_file:
-      - .env  # link the env file
+      - .env  # link the env file 

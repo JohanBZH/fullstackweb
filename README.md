@@ -1,10 +1,25 @@
 # Exercice fullstack web
 
-## Objectif - s'entrainer à déployer un site qui requête une BDD avec docker
+## Goal - try to deploy a simple php site that connects to a mysql database
 
-## Choix :
+## Dependancies :
 > php
 > php myadmin
 > mysql - db déjà créée
 > mysqli
 > docker
+
+## Step by step
+
+1. Launch Docker engine  
+2. In your directory, run the first time  
+```
+docker compose up --build
+```   
+Then  
+```
+docker compose up
+```   
+3. Access your site through the browser :
+- site : localhost
+- phpmyadmin : localhost/8001
