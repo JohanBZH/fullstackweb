@@ -7,9 +7,9 @@ $connect = mysqli_connect(
     'php_docker' # db table
 );
 
-$table_name == "db/php_docker_table";
+$table_name = "php_docker_table";
 
-$query = "SELECT * FROM $table_name";
+$query = "SELECT * FROM `" . $table_name . "`";
 
 $response = mysqli_query($connect, $query);
 
