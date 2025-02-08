@@ -32,16 +32,26 @@
         //Dès ici on est connecté et on peut faire des requêtes.
 
         //préparation de la requête
-        $sql = "SELECT * FROM `php_docker_table`";
+        $sql = "SELECT * FROM php_docker_table WHERE id = 3";
         //execution de la requête
         $requete = $db->query($sql);
 
         //on récupère les données (fetch ou fetchAll)
-        $title = $requete->fetch();
+        $data = $requete->fetchAll();
 
         echo "<pre>";
-        var_dump($title);
+        var_dump($data);
         echo "</pre>";
+
+        //Ajouter des data avec une requête préparée
+        $sql = "INSERT INTO php_docker_table (`title`, `body`, `date_created`) 
+        VALUES (:title, :body, :date_created)";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([
+            ':title' => 'Third post',
+            ':body' => 'This was inserted through php',
+            ':date_created' => '2025-02-08'
+        ]);
 
     ?>    
 </body>
